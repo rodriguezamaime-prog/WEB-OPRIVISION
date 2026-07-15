@@ -13,28 +13,22 @@
 
     <style>
         :root {
-            --azul-oscuro: #0b2e4e;
-            --dorado: #d4af37;
-            --cian: #00c4e5;
-            --negro-logo: #1c1c1c;
-            --blanco: #ffffff;
-            --gris-claro: #f8f9fa;
-            --font-titulos: 'Montserrat', sans-serif;
-            --font-textos: 'Lato', sans-serif;
+            --azul-oscuro: #0b2e4e; --dorado: #d4af37; --cian: #00c4e5;
+            --negro-logo: #1c1c1c; --blanco: #ffffff; --gris-claro: #f8f9fa;
+            --font-titulos: 'Montserrat', sans-serif; --font-textos: 'Lato', sans-serif;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
         body { font-family: var(--font-textos); color: #333; background-color: var(--blanco); overflow-x: hidden; padding-top: 80px; }
         h1, h2, h3, h4 { font-family: var(--font-titulos); color: var(--azul-oscuro); }
 
-        /* HEADER (Limpio y minimalista) */
+        /* HEADER */
         header { background-color: var(--blanco); padding: 10px 40px; display: flex; justify-content: space-between; align-items: center; position: fixed; width: 100%; top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.05); height: 80px; }
         .logo-container { display: flex; align-items: center; gap: 12px; cursor: pointer; user-select: none; }
         .avatar-logo { width: 55px; height: 55px; border-radius: 50%; border: 2px solid var(--cian); overflow: hidden; position: relative; background: #eee; }
         .avatar-logo img { width: 100%; height: 100%; object-fit: cover; }
         .logo-texto { display: flex; flex-direction: column; }
         .logo-marca { font-size: 22px; font-weight: 800; font-family: var(--font-titulos); line-height: 1; }
-        .logo-marca .part1 { color: var(--negro-logo); }
-        .logo-marca .part2 { color: var(--cian); }
+        .logo-marca .part1 { color: var(--negro-logo); } .logo-marca .part2 { color: var(--cian); }
         .logo-sub { font-size: 10px; color: #666; letter-spacing: 1px; font-weight: bold; margin-top: 2px; }
 
         nav ul { display: flex; list-style: none; align-items: center; gap: 20px; }
@@ -46,33 +40,20 @@
         .dropdown-content a:hover { background-color: var(--gris-claro); color: var(--cian); }
         .dropdown:hover .dropdown-content { display: block; animation: fadeIn 0.3s ease; }
 
-        /* BOTONES CTA CON RESPLANDOR */
-        .btn-hero-cta { 
-            background-color: var(--dorado); color: var(--azul-oscuro); padding: 12px 25px; border-radius: 50px; 
-            text-decoration: none; font-weight: 800; font-size: 14px; border: none; transition: 0.3s; cursor: pointer;
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.6); animation: pulseGlow 2s infinite; 
-        }
+        /* HERO & BUTTONS */
+        .btn-hero-cta { background-color: var(--dorado); color: var(--azul-oscuro); padding: 12px 25px; border-radius: 50px; text-decoration: none; font-weight: 800; font-size: 14px; border: none; transition: 0.3s; cursor: pointer; box-shadow: 0 0 15px rgba(212, 175, 55, 0.6); animation: pulseGlow 2s infinite; }
         .btn-hero-cta:hover { background-color: var(--azul-oscuro); color: var(--blanco); box-shadow: 0 0 25px rgba(11, 46, 78, 0.8); animation: none; }
+        @keyframes pulseGlow { 0% { box-shadow: 0 0 10px rgba(212, 175, 55, 0.4); transform: scale(1); } 50% { box-shadow: 0 0 25px rgba(212, 175, 55, 0.9); transform: scale(1.03); } 100% { box-shadow: 0 0 10px rgba(212, 175, 55, 0.4); transform: scale(1); } }
 
-        @keyframes pulseGlow {
-            0% { box-shadow: 0 0 10px rgba(212, 175, 55, 0.4); transform: scale(1); }
-            50% { box-shadow: 0 0 25px rgba(212, 175, 55, 0.9); transform: scale(1.03); }
-            100% { box-shadow: 0 0 10px rgba(212, 175, 55, 0.4); transform: scale(1); }
-        }
-
-        /* HERO */
-        .hero { height: calc(100vh - 80px); position: relative; display: flex; flex-direction: column; justify-content: center; align-items: flex-end; text-align: right; color: var(--blanco); padding: 0 8%; overflow: hidden; background-color: #111;}
+        .hero { height: calc(100vh - 80px); position: relative; display: flex; flex-direction: column; justify-content: center; align-items: flex-end; text-align: right; color: var(--blanco); padding: 0 8%; overflow: hidden; background-color: #0b2e4e;}
         .hero-bg-wrapper { position: absolute; top:0; left:0; width:100%; height:100%; z-index: 1; }
         .hero-bg { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.6); }
-        
         .hero-content-wrap { z-index: 2; position: relative; max-width: 650px; display: flex; flex-direction: column; align-items: flex-end; }
         .hero h1 { color: var(--blanco); font-size: 52px; margin-bottom: 20px; font-weight: 800; text-shadow: none; line-height: 1.1;}
         .hero p { font-size: 20px; margin-bottom: 35px; color: #f4f4f4; text-shadow: none; }
         .hero-upload-btn { display:none; position:absolute; top:20px; left:20px; background:var(--dorado); color:var(--azul-oscuro); padding:10px 15px; border-radius:5px; font-weight:bold; cursor:pointer; z-index:9999; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
-        
         .lens-divider { position: absolute; bottom: -5px; left: -1%; width: 102%; overflow: hidden; line-height: 0; z-index: 3; pointer-events: none; }
-        .lens-divider svg { display: block; width: 100%; height: 80px; transform: scaleY(-1); }
-        .lens-divider .shape-fill { fill: var(--blanco); }
+        .lens-divider svg { display: block; width: 100%; height: 80px; transform: scaleY(-1); } .lens-divider .shape-fill { fill: var(--blanco); }
 
         /* SECTIONS & GRID */
         section { padding: 90px 20px; text-align: center; position: relative; z-index: 4; background:var(--blanco); }
@@ -117,9 +98,8 @@
         .frame-item h4 { font-size: 13px; margin-bottom: 4px; color: var(--azul-oscuro); }
         .frame-item span { font-size: 11px; font-weight: bold; color: var(--dorado); }
 
-        .alianzas-track { display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 10px 20px 30px 20px; scroll-behavior: smooth; -ms-overflow-style: none; scrollbar-width: none; max-width: 1200px; margin: 0 auto; }
+        .alianzas-track { display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 10px 20px 30px 20px; scroll-behavior: smooth; -ms-overflow-style: none; scrollbar-width: none; max-width: 1200px; margin: 0 auto; justify-content: flex-start;}
         .alianzas-track::-webkit-scrollbar { display: none; }
-        .alianzas-track::before, .alianzas-track::after { content: ''; margin: auto; }
         .aliado-item { width: 160px; flex-shrink: 0; display: flex; flex-direction: column; align-items: center; scroll-snap-align: center; position: relative;}
         .aliado-logo { width: 140px; height: 140px; border-radius: 50%; object-fit: contain; box-shadow: 0 5px 20px rgba(0,0,0,0.05); background: white; padding: 15px; border: 2px solid transparent; transition: 0.3s; display: block;}
         .aliado-link { text-decoration: none; display: block; transition: transform 0.3s; }
@@ -133,10 +113,8 @@
         .ubi-info h2 { color: var(--dorado); font-size: 32px; margin-bottom: 20px; font-weight: 800;}
         .ubi-info p { color: var(--blanco); font-size: 16px; margin-bottom: 15px; display:flex; align-items:center; }
         .ubi-btn-maps, .ubi-btn-waze { padding: 20px; border-radius: 12px; text-decoration: none; font-weight: 800; font-size: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: 0.3s; color: white;}
-        .ubi-btn-maps { background: #4285F4; }
-        .ubi-btn-maps:hover { background: #2b6cd6; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.3);}
-        .ubi-btn-waze { background: #33ccff; }
-        .ubi-btn-waze:hover { background: #1ab2e6; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.3);}
+        .ubi-btn-maps { background: #4285F4; } .ubi-btn-maps:hover { background: #2b6cd6; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.3);}
+        .ubi-btn-waze { background: #33ccff; } .ubi-btn-waze:hover { background: #1ab2e6; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.3);}
 
         /* FOOTER */
         .footer-compact { background: #051626; color: #a0cbf2; padding: 40px 20px 100px; text-align: center; }
@@ -149,9 +127,6 @@
         .sticky-cta-bar { position: fixed; bottom: -120px; left: 0; width: 100%; background: linear-gradient(to right, #0b2e4e, #164a7c); padding: 15px 40px; display: flex; justify-content: space-between; align-items: center; z-index: 2000; transition: bottom 0.5s; border-top: 3px solid var(--dorado); box-shadow: none; }
         .sticky-cta-bar.visible { bottom: 0; }
         .sticky-text h3 { color: var(--blanco); font-size: 18px; font-weight: 700; margin-bottom: 2px; }
-        
-        .btn-shimmer-sticky { background-color: var(--dorado); color: var(--azul-oscuro); padding: 14px 32px; font-size: 16px; font-weight: 800; border-radius: 50px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; border: none; cursor:pointer; box-shadow: 0 0 15px rgba(212, 175, 55, 0.6); animation: pulseGlow 2s infinite; transition: 0.3s; }
-        .btn-shimmer-sticky:hover { background: var(--azul-oscuro); color: var(--blanco); transform: translateY(-2px); box-shadow: 0 0 25px rgba(11, 46, 78, 0.8); animation: none;}
 
         /* CMS SYSTEM CSS */
         .cms-upload-layer { position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(11,46,78,0.85); color: white; display: none; flex-direction: column; align-items: center; justify-content: center; font-size: 12px; cursor: pointer; font-weight: bold; opacity: 0; transition: 0.3s; z-index: 100; text-align: center; }
@@ -171,8 +146,7 @@
         .cloud-sync-status.error { color: #d9534f; }
 
         @media (max-width: 992px) {
-            header { padding: 10px 20px; }
-            nav { display: none; }
+            header { padding: 10px 20px; } nav { display: none; }
             .hero { align-items: center; text-align: center; padding: 0 5%; }
             .hero-content-wrap { align-items: center; text-align: center; }
             .sticky-cta-bar { flex-direction: column; text-align: center; gap: 15px; padding: 15px 20px; }
@@ -180,7 +154,6 @@
             .foto-erika-wrap { float: none; margin: 0 auto 30px; width: 220px; height: 220px; }
             .off-canvas { width: 100%; right: -100%; }
             .ubi-grid { grid-template-columns: 1fr; text-align: center; }
-            .ubi-info p { justify-content: center; }
         }
     </style>
 </head>
@@ -189,7 +162,8 @@
     <header>
         <div class="logo-container" title="Doble clic rápido 5 veces para editar">
             <div class="avatar-logo has-cms">
-                <img id="imgNavLogo" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" style="transition: opacity 0.5s ease-in;" alt="Logo OpriVisión">
+                <!-- Se añade Data-Default-Src para garantizar que NUNCA esté vacío -->
+                <img id="imgNavLogo" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-default-src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=200&q=80" style="transition: opacity 0.5s ease-in;" alt="Logo OpriVisión">
                 <label for="inputNavLogo" class="cms-upload-layer" style="border-radius: 50%;"><i class="fa-solid fa-camera"></i></label>
                 <input type="file" id="inputNavLogo" class="cms-file-input" accept="image/*" onchange="loadCMSImage(event, 'imgNavLogo')">
             </div>
@@ -211,7 +185,8 @@
 
     <section id="inicio" class="hero">
         <div class="hero-bg-wrapper has-cms">
-            <img id="imgHeroBg" class="hero-bg" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" style="transition: opacity 0.8s ease-in;" alt="Fondo OpriVisión">
+            <!-- Píxel Transparente inicial + URL de respaldo asegurada -->
+            <img id="imgHeroBg" class="hero-bg" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-default-src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=1920&q=80" style="transition: opacity 0.8s ease-in;" alt="Fondo OpriVisión">
             <label for="inputHeroBg" class="hero-upload-btn" id="heroUploaderBtn"><i class="fa-solid fa-camera"></i> Cambiar Fondo</label>
             <input type="file" id="inputHeroBg" class="cms-file-input" accept="image/*" onchange="loadCMSImage(event, 'imgHeroBg')">
         </div>
@@ -219,12 +194,9 @@
         <div class="hero-content-wrap">
             <h1 id="txtHeroTitle">Tu Salud Visual en las Mejores Manos</h1>
             <p id="txtHeroSub">Más que una óptica, somos tu centro de bienestar visual. Agenda tu valoración integral y descubre la tranquilidad de ver lo que más amas con total claridad.</p>
-            <button onclick="trackMetric('cta'); window.open('https://wa.me/573167210862?text=Hola,%20deseo%20agendar%20una%20valoración.', '_blank');" class="btn-hero-cta">Quiero mi cita</button>
+            <button onclick="window.open('https://wa.me/573167210862?text=Hola,%20deseo%20agendar%20una%20valoración.', '_blank');" class="btn-hero-cta">Quiero mi cita</button>
         </div>
-
-        <div class="lens-divider">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0 Q600,110 1200,0 L1200,120 L0,120 Z" class="shape-fill"></path></svg>
-        </div>
+        <div class="lens-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0 Q600,110 1200,0 L1200,120 L0,120 Z" class="shape-fill"></path></svg></div>
     </section>
 
     <section id="nosotros">
@@ -235,9 +207,10 @@
             <div class="card-val"><i class="fa-solid fa-compass"></i><h3 id="c3T">Visión</h3><p id="c3P">Para el año 2028, ser reconocida como una empresa líder, sólida y humana en proporcionar soluciones en salud visual en el centro del Valle.</p></div>
         </div>
 
-        <div class="biografia-editorial" title="Haz 5 clics en la foto para ver métricas">
+        <div class="biografia-editorial">
             <div class="foto-erika-wrap has-cms">
-                <img id="imgErikaProfile" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" style="transition: opacity 0.5s ease-in;" alt="Dra. Erika Prieto Villalba" onclick="handleErikaClicks()">
+                <!-- Fallback Image asegurada -->
+                <img id="imgErikaProfile" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-default-src="https://images.unsplash.com/photo-1594824436951-7f12bc31a4f5?w=400&q=80" style="transition: opacity 0.5s ease-in;" alt="Dra. Erika Prieto Villalba">
                 <label for="inputErikaProfile" class="cms-upload-layer"><i class="fa-solid fa-camera"></i></label>
                 <input type="file" id="inputErikaProfile" class="cms-file-input" accept="image/*" onchange="loadCMSImage(event, 'imgErikaProfile')">
             </div>
@@ -250,15 +223,9 @@
     <section id="servicios" style="background-color: var(--gris-claro);">
         <h2 class="section-title">Nuestros Servicios</h2>
         <div class="grid-6">
-            <div class="card-val" style="background:white;">
-                <i class="fa-solid fa-glasses"></i><h3 id="srv1T">Optometría General</h3><p id="srv1P">Exámenes visuales computarizados completos con tecnología diagnóstica de última generación.</p><button onclick="trackMetric('cta'); window.open('https://wa.me/573167210862?text=Hola,%20deseo%20agendar%20una%20cita.', '_blank');" class="btn-srv">Agendar Servicio</button>
-            </div>
-            <div class="card-val" style="background:white;">
-                <i class="fa-solid fa-store"></i><h3 id="srv5T">Venta de Monturas</h3><p id="srv5P">Catálogo selecto de excelente calidad en materiales avanzados: Acetato, TR90, Titanio y Metálicas.</p><button onclick="openOffCanvas('panel-tendencias')" class="btn-srv">Ver Tendencias</button>
-            </div>
-            <div class="card-val" style="background:white;">
-                <i class="fa-solid fa-wrench"></i><h3 id="srv3T">Taller Óptico</h3><p id="srv3P">Mantenimiento, reparación técnica y ensamble de alta precisión para sus monturas.</p><button onclick="trackMetric('cta'); window.open('https://wa.me/573167210862?text=Hola,%20necesito%20un%20servicio%20técnico.', '_blank');" class="btn-srv">Solicitar Servicio</button>
-            </div>
+            <div class="card-val" style="background:white;"><i class="fa-solid fa-glasses"></i><h3 id="srv1T">Optometría General</h3><p id="srv1P">Exámenes visuales computarizados completos con tecnología diagnóstica de última generación.</p><button onclick="window.open('https://wa.me/573167210862', '_blank');" class="btn-srv">Agendar Servicio</button></div>
+            <div class="card-val" style="background:white;"><i class="fa-solid fa-store"></i><h3 id="srv5T">Venta de Monturas</h3><p id="srv5P">Catálogo selecto de excelente calidad en materiales avanzados: Acetato, TR90, Titanio y Metálicas.</p><button onclick="openOffCanvas('panel-tendencias')" class="btn-srv">Ver Tendencias</button></div>
+            <div class="card-val" style="background:white;"><i class="fa-solid fa-wrench"></i><h3 id="srv3T">Taller Óptico</h3><p id="srv3P">Mantenimiento, reparación técnica y ensamble de alta precisión para sus monturas.</p><button onclick="window.open('https://wa.me/573167210862', '_blank');" class="btn-srv">Solicitar Servicio</button></div>
         </div>
     </section>
 
@@ -274,17 +241,11 @@
     <section id="alianzas" style="padding-bottom:10px; background:var(--blanco);">
         <h2 class="section-title">Nuestras Alianzas</h2>
         <p style="margin-bottom: 30px; color:#666;">Empresas que confían en OpriVisión como proveedor de salud visual.</p>
-        
-        <div style="display:flex; justify-content:center; margin-bottom:15px;">
-            <button onclick="addAlianza()" class="btn-srv btn-guardar-cms" id="btn-add-alianza" style="display:none; width:auto; padding:8px 20px; font-size:13px; background:#e0a800; color:white; border-radius:30px;"><i class="fa-solid fa-plus"></i> Añadir Nueva Alianza</button>
-        </div>
-
         <div class="alianzas-track" id="trackAlianzas">
-            <!-- Cajones inyectados dinámicamente -->
+            <!-- El código de visibilidad inyectará las alianzas aquí sin dejar espacios vacíos -->
         </div>
     </section>
 
-    <!-- UBICACIÓN CTA -->
     <section id="ubicacion" class="seccion-ubicacion">
         <div class="ubi-grid">
             <div class="ubi-info">
@@ -293,12 +254,8 @@
                 <p id="txtUbiP2"><i class="fa-regular fa-clock" style="margin-right:10px;"></i> Horario: Lunes a Viernes (8:00 AM - 6:00 PM)</p>
                 <p id="txtUbiP3"><i class="fa-solid fa-phone" style="margin-right:10px;"></i> Teléfono: <a href="tel:+573167210862" style="color: var(--blanco); text-decoration: none;">316 7210862</a></p>
             </div>
-            <a href="https://www.google.com/maps/search/?api=1&query=Calle+26+%23+32-01,+Tulua" target="_blank" class="ubi-btn-maps">
-                <i class="fa-solid fa-map-location-dot" style="font-size:32px; margin-bottom:8px;"></i> Abrir en Google Maps
-            </a>
-            <a href="https://waze.com/ul?q=Calle+26+32-01+Tulua" target="_blank" class="ubi-btn-waze">
-                <i class="fa-brands fa-waze" style="font-size:32px; margin-bottom:8px;"></i> Guiarme con Waze
-            </a>
+            <a href="https://www.google.com/maps/search/?api=1&query=Calle+26+%23+32-01,+Tulua" target="_blank" class="ubi-btn-maps"><i class="fa-solid fa-map-location-dot" style="font-size:32px; margin-bottom:8px;"></i> Abrir en Google Maps</a>
+            <a href="https://waze.com/ul?q=Calle+26+32-01+Tulua" target="_blank" class="ubi-btn-waze"><i class="fa-brands fa-waze" style="font-size:32px; margin-bottom:8px;"></i> Guiarme con Waze</a>
         </div>
     </section>
 
@@ -308,9 +265,7 @@
                 <div class="logo-marca" style="font-size:28px;"><span style="color:white;">Opri</span><span class="part2" style="color: var(--cian);">Visión</span></div>
                 <div class="logo-sub" style="color:#a0cbf2;">Dra. Erika Prieto</div>
             </div>
-            <div>
-                <a href="mailto:oprivision@gmail.com" style="display:block; color:white; text-decoration:none;"><i class="fa-solid fa-envelope" style="color:var(--dorado); width:20px;"></i> oprivision@gmail.com</a>
-            </div>
+            <div><a href="mailto:oprivision@gmail.com" style="display:block; color:white; text-decoration:none;"><i class="fa-solid fa-envelope" style="color:var(--dorado); width:20px;"></i> oprivision@gmail.com</a></div>
             <div class="footer-social">
                 <a href="https://instagram.com/oprivision" target="_blank"><i class="fa-brands fa-instagram"></i></a>
                 <a href="https://facebook.com/oprivision" target="_blank"><i class="fa-brands fa-facebook"></i></a>
@@ -319,78 +274,106 @@
         <p style="font-size: 12px; opacity:0.6; padding-top:20px; margin-top:30px;">© 2026 OpriVisión. Desarrollado con excelencia en ingeniería.</p>
     </footer>
 
-    <!-- STICKY CTA -->
     <div class="sticky-cta-bar" id="stickyCta">
         <div class="sticky-text"><h3 id="txtStickyT">¿Listos para una experiencia de calidad visual?</h3></div>
-        <button onclick="trackMetric('cta'); window.open('https://wa.me/573167210862', '_blank');" class="btn-shimmer-sticky">Quiero mi cita</button>
+        <button onclick="window.open('https://wa.me/573167210862', '_blank');" class="btn-shimmer-sticky">Quiero mi cita</button>
     </div>
 
     <!-- PANELES ADMINISTRATIVOS -->
     <div id="panelCmsControl" style="display: none; position: fixed; bottom: 130px; left: 20px; background: white; border: 3px solid var(--dorado); padding: 20px; border-radius: 12px; z-index: 99999; box-shadow: 0 10px 40px rgba(0,0,0,0.4); width: 280px;">
         <h4 style="text-align: center; margin-bottom: 10px;"><i class="fa-solid fa-gears"></i> Engine CMS</h4>
-        <div class="cloud-sync-status saved" id="cloudStatus"><i class="fa-solid fa-cloud-check"></i> Sincronizado con la Nube</div>
-        <button onclick="location.reload()" style="width: 100%; padding: 8px; background: #ee6c4d; color: white; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; font-size:12px;">Cerrar Panel CMS</button>
+        <div class="cloud-sync-status saved" id="cloudStatus"><i class="fa-solid fa-cloud-check"></i> Modo Edición Activo</div>
+        <p style="font-size: 11px; color:#555; text-align:center; margin-bottom:15px;">Al guardar, las casillas vacías desaparecerán automáticamente para el público.</p>
+        <button onclick="location.reload()" style="width: 100%; padding: 8px; background: #ee6c4d; color: white; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; font-size:12px;">Cerrar Panel y Ver Resultado</button>
     </div>
 
     <script>
-        // 1. CONEXIÓN A LA BÓVEDA
         const supabaseUrl = 'https://yixfnpevnzkmxncbrkgc.supabase.co';
         const supabaseKey = 'sb_publishable_Rn6LyDJWRuT4yVpVHS-EyQ_mTQEagXI';
         const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
 
-        let alianzaCount = 6; 
-
-        // 2. ARRANQUE DEL SISTEMA: EL MOTOR DE CACHÉ
         document.addEventListener("DOMContentLoaded", () => {
-            trackMetric('visits'); 
             initStickyObserver();
             
-            // FASE A: Carga Instantánea (0.0 ms) leyendo el cerebro local del celular
-            const memoriaLocal = localStorage.getItem('oprivision_cache_v1');
+            // 1. Pre-construimos el DOM oculto (Para no tener botones de "Añadir")
+            construirModuloTendencias();
+            construirModuloAlianzas();
+
+            // 2. Revisar Caché Inmediato
+            const memoriaLocal = localStorage.getItem('oprivision_cache_v2');
             if (memoriaLocal) {
-                const mem = JSON.parse(memoriaLocal);
-                if(mem.alianzaCount) alianzaCount = mem.alianzaCount;
-                construirModuloTendencias();
-                construirModuloAlianzas();
-                inyectarMemoriaAlHTML(mem);
+                inyectarMemoriaAlHTML(JSON.parse(memoriaLocal));
             } else {
-                // Si es la primera visita de su vida, pinta las cajas vacías.
-                construirModuloTendencias();
-                construirModuloAlianzas();
+                inyectarMemoriaAlHTML({}); // Fuerza la carga de imágenes por defecto
             }
 
-            // FASE B: Sincronización Silenciosa (El mensajero viaja a Supabase)
+            // 3. Traer datos reales de la nube
             loadFromCloud();
         });
 
         // ==========================================
-        // FUNCIONES CORE DEL MOTOR
+        // MOTOR DE VISIBILIDAD INTELIGENTE O(n)
         // ==========================================
+        function updateVisibility() {
+            const isCMS = document.body.classList.contains('cms-active');
+            
+            // Control de Monturas
+            for(let i=1; i<=8; i++) {
+                const img = document.getElementById(`imgFrame_${i}`);
+                const wrap = document.getElementById(`wrapFrame_${i}`);
+                if(!img || !wrap) continue;
+                
+                // Si la imagen es el píxel transparente, está "Vacía"
+                const isEmpty = img.src.includes('data:image/gif'); 
+                
+                if (isEmpty && !isCMS) {
+                    wrap.style.display = 'none'; // Oculta a pacientes
+                } else {
+                    wrap.style.display = 'block'; // Muestra a Admin o si tiene foto
+                    wrap.style.opacity = (isCMS && isEmpty) ? '0.3' : '1'; // El Admin las ve fantasma
+                }
+            }
+
+            // Control de Aliados (Cero Círculos Vacíos)
+            for(let i=1; i<=15; i++) {
+                const img = document.getElementById(`imgAlianza_${i}`);
+                const wrap = document.getElementById(`wrapAlianza_${i}`);
+                if(!img || !wrap) continue;
+                
+                const isEmpty = img.src.includes('data:image/gif');
+                
+                if (isEmpty && !isCMS) {
+                    wrap.style.display = 'none'; // Desaparece el círculo vacío
+                } else {
+                    wrap.style.display = 'flex'; 
+                    wrap.style.opacity = (isCMS && isEmpty) ? '0.3' : '1';
+                }
+            }
+        }
+
+        // Función para inyectar datos (Con Fallback)
         function inyectarMemoriaAlHTML(mem) {
             document.querySelectorAll('[id]').forEach(el => {
-                if(mem[el.id]) {
-                    if(el.tagName === 'IMG') el.src = mem[el.id];
-                    else el.innerHTML = mem[el.id];
+                if (el.tagName === 'IMG') {
+                    if (mem[el.id]) {
+                        el.src = mem[el.id]; // Foto real de la Base de Datos
+                    } else if (el.hasAttribute('data-default-src')) {
+                        el.src = el.getAttribute('data-default-src'); // Foto hermosa por defecto (Evita huecos negros)
+                    }
+                } else if (mem[el.id]) {
+                    el.innerHTML = mem[el.id];
                 }
-                if(mem[el.id+'_style']) el.style.display = mem[el.id+'_style'];
+                
                 if(mem[el.id+'_href'] && el.tagName === 'A') el.href = mem[el.id+'_href'];
             });
+            updateVisibility(); // Limpia los vacíos
         }
 
         async function loadFromCloud() {
             const { data, error } = await supabaseClient.from('oprivision_nube').select('estado_json').eq('id', 1).single();
-            if(data && data.estado_json && Object.keys(data.estado_json).length > 0) {
-                const mem = data.estado_json;
-                // Sobrescribe la memoria caché para la próxima visita
-                localStorage.setItem('oprivision_cache_v1', JSON.stringify(mem));
-                
-                // Actualiza cualquier cambio sutil que haya hecho la Dra. Erika mientras el paciente entraba
-                if(mem.alianzaCount) alianzaCount = mem.alianzaCount;
-                document.getElementById('containerTendencias').innerHTML = '';
-                document.getElementById('trackAlianzas').innerHTML = '';
-                construirModuloTendencias();
-                construirModuloAlianzas();
-                inyectarMemoriaAlHTML(mem);
+            if(data && data.estado_json) {
+                localStorage.setItem('oprivision_cache_v2', JSON.stringify(data.estado_json));
+                inyectarMemoriaAlHTML(data.estado_json);
             }
         }
 
@@ -398,21 +381,21 @@
             const status = document.getElementById('cloudStatus');
             if(status) { status.className = 'cloud-sync-status saving'; status.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Guardando...'; }
 
-            const memory = { alianzaCount: alianzaCount };
+            const memory = {};
             document.querySelectorAll('[contenteditable="true"]').forEach(el => memory[el.id] = el.innerHTML);
-            document.querySelectorAll('img[id]').forEach(img => memory[img.id] = img.src);
+            
+            // O(1) Optimization: Solo guardamos imágenes que NO sean el píxel transparente vacío
+            document.querySelectorAll('img[id]').forEach(img => {
+                if (!img.src.includes('data:image/gif')) memory[img.id] = img.src;
+            });
+
             document.querySelectorAll('a[id^="linkAlianza_"]').forEach(el => memory[el.id+'_href'] = el.href);
-            document.querySelectorAll('[id^="wrapFrame_"]').forEach(el => memory[el.id+'_style'] = el.style.display);
-            document.querySelectorAll('[id^="wrapAlianza_"]').forEach(el => memory[el.id+'_html'] = el.innerHTML);
             
             const { data, error } = await supabaseClient.from('oprivision_nube').upsert({ id: 1, estado_json: memory });
             
             if(status) {
-                if(error) { status.className = 'cloud-sync-status error'; status.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Error de red'; }
-                else { 
-                    status.className = 'cloud-sync-status saved'; status.innerHTML = '<i class="fa-solid fa-cloud-check"></i> Sincronizado'; 
-                    localStorage.setItem('oprivision_cache_v1', JSON.stringify(memory)); // Guarda en su propio caché
-                }
+                if(error) { status.className = 'cloud-sync-status error'; status.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Error al guardar'; }
+                else { status.className = 'cloud-sync-status saved'; status.innerHTML = '<i class="fa-solid fa-cloud-check"></i> Sincronizado'; localStorage.setItem('oprivision_cache_v2', JSON.stringify(memory)); }
             }
         }
 
@@ -425,11 +408,11 @@
             let html = '';
             for(let i=1; i<=8; i++){
                 html += `
-                <div class="frame-item has-cms" id="wrapFrame_${i}">
-                    <button class="cms-delete-btn" onclick="document.getElementById('wrapFrame_${i}').style.display='none'; saveToCloud();">×</button>
+                <div class="frame-item has-cms" id="wrapFrame_${i}" style="display:none;">
+                    <button class="cms-delete-btn" onclick="borrarImagen('imgFrame_${i}');" title="Limpiar Montura">×</button>
                     <div class="frame-img-box" onclick="event.stopPropagation()">
-                        <img id="imgFrame_${i}" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" style="background:#f4f4f4; transition: opacity 0.5s;">
-                        <label for="inputFrame_${i}" class="cms-upload-layer"><i class="fa-solid fa-camera"></i></label>
+                        <img id="imgFrame_${i}" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" style="transition: opacity 0.5s;">
+                        <label for="inputFrame_${i}" class="cms-upload-layer"><i class="fa-solid fa-camera"></i> Subir</label>
                         <input type="file" id="inputFrame_${i}" class="cms-file-input" accept="image/*" onchange="loadCMSImage(event, 'imgFrame_${i}')">
                     </div>
                     <h4 contenteditable="false" class="cms-txt" id="titleFrame_${i}">Montura Exclusiva ${i}</h4>
@@ -441,41 +424,33 @@
 
         function construirModuloAlianzas() {
             let html = '';
-            for(let i=1; i<=alianzaCount; i++){ html += armarHTMLAlianza(i); }
+            for(let i=1; i<=15; i++){
+                html += `
+                <div class="aliado-item has-cms" id="wrapAlianza_${i}" style="display:none;">
+                    <button class="cms-delete-btn" onclick="borrarImagen('imgAlianza_${i}');" title="Eliminar Alianza">×</button>
+                    <button class="cms-link-btn" onclick="setAlianzaLink(${i})" title="Añadir Enlace"><i class="fa-solid fa-link"></i></button>
+                    <a href="#" target="_blank" class="aliado-link" id="linkAlianza_${i}" onclick="return checkLink(this)">
+                        <img id="imgAlianza_${i}" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" class="aliado-logo" style="transition: opacity 0.5s;" alt="Logo">
+                        <label for="inputAlianza_${i}" class="cms-upload-layer" style="border-radius:50%;" onclick="event.preventDefault(); document.getElementById('inputAlianza_${i}').click();"><i class="fa-solid fa-camera"></i> Subir</label>
+                    </a>
+                    <input type="file" id="inputAlianza_${i}" class="cms-file-input" accept="image/*" onchange="loadCMSImage(event, 'imgAlianza_${i}')">
+                    <div class="aliado-nombre" contenteditable="false" id="txtAlianza_${i}">Empresa ${i}</div>
+                </div>`;
+            }
             document.getElementById('trackAlianzas').innerHTML = html;
-            if(document.body.classList.contains('cms-active')) { document.querySelectorAll('.aliado-nombre').forEach(el => el.setAttribute('contenteditable', 'true')); }
-        }
-
-        function armarHTMLAlianza(id) {
-            return `
-            <div class="aliado-item has-cms" id="wrapAlianza_${id}">
-                <button class="cms-delete-btn" onclick="document.getElementById('wrapAlianza_${id}').remove(); saveToCloud();">×</button>
-                <button class="cms-link-btn" onclick="setAlianzaLink(${id})"><i class="fa-solid fa-link"></i></button>
-                <a href="#" target="_blank" class="aliado-link" id="linkAlianza_${id}" onclick="return checkLink(this)">
-                    <img id="imgAlianza_${id}" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" class="aliado-logo" style="background:#eee; transition: opacity 0.5s;" alt="Logo">
-                    <label for="inputAlianza_${id}" class="cms-upload-layer" style="border-radius:50%;" onclick="event.preventDefault(); document.getElementById('inputAlianza_${id}').click();"><i class="fa-solid fa-camera"></i></label>
-                </a>
-                <input type="file" id="inputAlianza_${id}" class="cms-file-input" accept="image/*" onchange="loadCMSImage(event, 'imgAlianza_${id}')">
-                <div class="aliado-nombre" contenteditable="false" id="txtAlianza_${id}">Empresa ${id}</div>
-            </div>`;
-        }
-
-        function addAlianza() {
-            alianzaCount++;
-            const tempDiv = document.createElement('div');
-            tempDiv.innerHTML = armarHTMLAlianza(alianzaCount);
-            document.getElementById('trackAlianzas').appendChild(tempDiv.firstElementChild);
-            if(document.body.classList.contains('cms-active')) { document.getElementById(`txtAlianza_${alianzaCount}`).setAttribute('contenteditable', 'true'); }
-            saveToCloud();
         }
 
         // ==========================================
-        // UTILIDADES Y COMPRESIÓN DE IMÁGENES
+        // FUNCIONES DE CONTROL
         // ==========================================
+        function borrarImagen(imgId) {
+            // Reemplaza la imagen con el píxel vacío y recarga la visibilidad
+            document.getElementById(imgId).src = "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=";
+            updateVisibility(); saveToCloud();
+        }
+
         function loadCMSImage(evt, target) {
-            const f = evt.target.files[0];
-            if(!f) return;
-
+            const f = evt.target.files[0]; if(!f) return;
             const status = document.getElementById('cloudStatus');
             if(status) { status.className = 'cloud-sync-status saving'; status.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Comprimiendo...'; }
 
@@ -487,22 +462,18 @@
                     let width = img.width; let height = img.height;
                     if (width > height) { if (width > MAX_WIDTH) { height *= MAX_WIDTH / width; width = MAX_WIDTH; } } 
                     else { if (height > MAX_HEIGHT) { width *= MAX_HEIGHT / height; height = MAX_HEIGHT; } }
-
                     const canvas = document.createElement('canvas');
-                    canvas.width = width; canvas.height = height;
-                    const ctx = canvas.getContext('2d');
-                    ctx.drawImage(img, 0, 0, width, height);
-
+                    canvas.width = width; canvas.height = height; const ctx = canvas.getContext('2d'); ctx.drawImage(img, 0, 0, width, height);
                     const compressedBase64 = canvas.toDataURL('image/webp', 0.7);
+                    
                     document.getElementById(target).src = compressedBase64;
-                    await saveToCloud();
+                    updateVisibility(); await saveToCloud();
                 };
                 img.src = e.target.result;
             };
             reader.readAsDataURL(f);
         }
 
-        function trackMetric(type) { let c = parseInt(localStorage.getItem('metric_'+type) || '0'); localStorage.setItem('metric_'+type, c + 1); }
         function initStickyObserver() { window.addEventListener('scroll', () => { if (window.scrollY > document.getElementById('inicio').offsetHeight) document.getElementById('stickyCta').classList.add('visible'); else document.getElementById('stickyCta').classList.remove('visible'); }); }
         function openOffCanvas(id) { document.querySelectorAll('.off-canvas').forEach(p => p.classList.remove('active')); document.getElementById(id).classList.add('active'); document.getElementById('overlay-panels').style.display = 'block'; }
         function closeAllPanels() { document.querySelectorAll('.off-canvas').forEach(p => p.classList.remove('active')); document.getElementById('overlay-panels').style.display = 'none'; }
@@ -519,12 +490,13 @@
             document.body.classList.add('cms-active'); 
             document.getElementById('panelCmsControl').style.display = 'block';
             document.getElementById('heroUploaderBtn').style.display = 'block';
-            document.getElementById('btn-add-alianza').style.display = 'inline-block'; 
-            document.querySelectorAll('.aliado-nombre').forEach(el => el.setAttribute('contenteditable', 'true'));
             
             const idsTextos = ['txtMarca1','txtMarca2','txtLogoSub','txtHeroTitle','txtHeroSub','txtSecTitle1','c1T','c1P','c2T','c2P','c3T','c3P','txtErikaName','txtErikaCargo','txtErikaBio','txtUbiT','txtUbiP1','txtUbiP2','txtUbiP3'];
             for(let i=1; i<=8; i++) { idsTextos.push(`titleFrame_${i}`); idsTextos.push(`codeFrame_${i}`); }
+            for(let i=1; i<=15; i++) { idsTextos.push(`txtAlianza_${i}`); }
             idsTextos.forEach(id => { const el = document.getElementById(id); if(el) { el.setAttribute('contenteditable','true'); el.style.outline='2px dashed var(--dorado)'; } });
+            
+            updateVisibility(); // Despliega las 15 ranuras en modo fantasma para que puedas subir fotos
         }
     </script>
 </body>
