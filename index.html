@@ -12,7 +12,7 @@
         :root {
             --azul-oscuro: #0b2e4e;
             --dorado: #d4af37;
-            --cian: #00c4e5; /* Azul claro corporativo */
+            --cian: #00c4e5;
             --negro-logo: #1c1c1c;
             --blanco: #ffffff;
             --gris-claro: #f8f9fa;
@@ -23,7 +23,7 @@
         body { font-family: var(--font-textos); color: #333; background-color: var(--blanco); overflow-x: hidden; padding-top: 80px; }
         h1, h2, h3, h4 { font-family: var(--font-titulos); color: var(--azul-oscuro); }
 
-        /* HEADER */
+        /* HEADER (Limpio y minimalista) */
         header { background-color: var(--blanco); padding: 10px 40px; display: flex; justify-content: space-between; align-items: center; position: fixed; width: 100%; top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.05); height: 80px; }
         .logo-container { display: flex; align-items: center; gap: 12px; cursor: pointer; user-select: none; }
         .avatar-logo { width: 55px; height: 55px; border-radius: 50%; border: 2px solid var(--cian); overflow: hidden; position: relative; background: #eee; }
@@ -46,7 +46,7 @@
         /* =========================================================================
            BOTONES CTA CON RESPLANDOR (GLOW EFFECT)
            ========================================================================= */
-        .btn-header-cta, .btn-hero-cta { 
+        .btn-hero-cta { 
             background-color: var(--dorado); 
             color: var(--azul-oscuro); 
             padding: 12px 25px; 
@@ -57,14 +57,14 @@
             border: none; 
             transition: 0.3s; 
             cursor: pointer;
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.6); /* Resplandor Inicial */
-            animation: pulseGlow 2s infinite; /* Animación de Latido */
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.6); 
+            animation: pulseGlow 2s infinite; 
         }
-        .btn-header-cta:hover, .btn-hero-cta:hover { 
+        .btn-hero-cta:hover { 
             background-color: var(--azul-oscuro); 
             color: var(--blanco); 
-            box-shadow: 0 0 25px rgba(11, 46, 78, 0.8); /* Resplandor al hacer hover */
-            animation: none; /* Detiene el latido al poner el mouse */
+            box-shadow: 0 0 25px rgba(11, 46, 78, 0.8); 
+            animation: none; 
         }
 
         @keyframes pulseGlow {
@@ -161,13 +161,31 @@
         .snellen-chart.astigmatismo div { filter: blur(1px); text-shadow: -1.5px 0 2px rgba(0,0,0,0.5); }
 
         /* =========================================================================
-           ALIANZAS (MARCOS CIRCULARES AL 50%)
+           ALIANZAS (MARCOS CIRCULARES AL 50%, CENTRADO SIMÉTRICO DINÁMICO)
            ========================================================================= */
-        .alianzas-track { display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 10px 20px 30px 20px; scroll-behavior: smooth; -ms-overflow-style: none; scrollbar-width: none; max-width: 1200px; margin: 0 auto;}
+        .alianzas-track { 
+            display: flex; 
+            gap: 20px; 
+            overflow-x: auto; 
+            scroll-snap-type: x mandatory; 
+            padding: 10px 20px 30px 20px; 
+            scroll-behavior: smooth; 
+            -ms-overflow-style: none; 
+            scrollbar-width: none; 
+            max-width: 1200px; 
+            margin: 0 auto;
+        }
         .alianzas-track::-webkit-scrollbar { display: none; }
+        
+        /* TRUCO TÉCNICO: Pseudo-elementos que centran dinámicamente el flex-container */
+        .alianzas-track::before,
+        .alianzas-track::after {
+            content: '';
+            margin: auto;
+        }
+
         .aliado-item { width: 160px; flex-shrink: 0; display: flex; flex-direction: column; align-items: center; scroll-snap-align: center; position: relative;}
         
-        /* SOLUCIÓN: Marcos 100% circulares (border-radius: 50%) */
         .aliado-logo { width: 140px; height: 140px; border-radius: 50%; object-fit: contain; box-shadow: 0 5px 20px rgba(0,0,0,0.05); background: white; padding: 15px; border: 2px solid transparent; transition: 0.3s; display: block;}
         
         .aliado-link { text-decoration: none; display: block; transition: transform 0.3s; }
@@ -215,9 +233,7 @@
         body.cms-active .cms-delete-btn { display:block; }
         body.cms-active .cms-upload-layer { display:flex; border: 2px dashed var(--dorado); }
 
-        /* =========================================================================
-           DISEÑO RESPONSIVO (MÓVILES)
-           ========================================================================= */
+        /* DISEÑO RESPONSIVO (MÓVILES) */
         @media (max-width: 992px) {
             header { padding: 10px 20px; }
             nav { display: none; }
@@ -232,11 +248,6 @@
         }
 
         @media (max-width: 768px) {
-            /* SOLUCIÓN: Ocultamos el botón de la cabecera en celulares para evitar amontonamiento. 
-               El usuario usará el botón del Hero y la Sticky Bar al bajar. */
-            .btn-header-cta { 
-                display: none; 
-            }
             .logo-marca { font-size: 20px; }
         }
     </style>
@@ -271,7 +282,7 @@
                 </li>
             </ul>
         </nav>
-        <button onclick="trackMetric('cta'); window.open('https://wa.me/573167210862?text=Hola%20OpriVisión,%20quiero%20agendar%20una%20cita.', '_blank');" class="btn-header-cta">Quiero mi cita</button>
+        <!-- BOTÓN SUPERIOR ELIMINADO PARA LIMPIEZA DE INTERFAZ Y EVITAR AMONTONAMIENTO EN MÓVILES -->
     </header>
 
     <section id="inicio" class="hero">
@@ -298,7 +309,7 @@
             <div class="card-val"><i class="fa-solid fa-building"></i><h3 id="c1T">Quiénes Somos</h3><p id="c1P">OpriVisión nace desde el año 2017 como un emprendimiento que se preocupa por la <strong>salud y el cuidado visual</strong>. Nuestra razón de ser es la atención con <strong>calidad, experiencia y honestidad</strong>.</p></div>
             <div class="card-val"><i class="fa-solid fa-bullseye"></i><h3 id="c2T">Misión</h3><p id="c2P">Ser una empresa dedicada a satisfacer las <strong>necesidades visuales</strong> de nuestros pacientes con <strong>calidad y calidez</strong>.</p></div>
             <div class="card-val"><i class="fa-solid fa-compass"></i><h3 id="c3T">Visión</h3><p id="c3P">Para el año 2028, ser reconocida como una empresa <strong>líder, sólida y humana</strong> en proporcionar soluciones en salud visual para los habitantes del <strong>centro del Valle</strong>.</p></div>
-            <div class="card-val"><i class="fa-solid fa-star"></i><h3 id="c4T">Mega</h3><p id="c4P">Al año 2030 OpriVisión se transformará en un <strong>centro de salud visual</strong>, brindando múltiples services y especialidades, convirtiéndose en <strong>pionero</strong> en toda la región central.</p></div>
+            <div class="card-val"><i class="fa-solid fa-star"></i><h3 id="c4T">Mega</h3><p id="c4P">Al año 2030 OpriVisión se transformará en un <strong>centro de salud visual</strong>, brindando múltiples servicios y especialidades, convirtiéndose en <strong>pionero</strong> en toda la región central.</p></div>
             <div class="card-val"><i class="fa-solid fa-handshake"></i><h3 id="c5T">Valores</h3><p id="c5P"><strong>Calidad e innovación</strong> en nuestros productos.<br><br><strong>Responsabilidad y compromiso</strong> con cada diagnóstico.</p></div>
             <div class="card-val"><i class="fa-solid fa-scale-balanced"></i><h3 id="c6T">Principios</h3><p id="c6P"><strong>Confianza y seguridad</strong> para tu visión.<br><br><strong>Coherencia y eficiencia</strong> en nuestros procesos.</p></div>
         </div>
@@ -736,9 +747,6 @@
             document.querySelectorAll('input[name="radDef"]').forEach(r => r.addEventListener('change', calcDef));
         }
 
-        // ==========================================
-        // AUTO-SAVE SYSTEM (Versión 6 para caché)
-        // ==========================================
         function saveToLocalCache() {
             const memory = {};
             document.querySelectorAll('[contenteditable="true"]').forEach(el => memory[el.id] = el.innerHTML);
@@ -749,11 +757,11 @@
             document.querySelectorAll('[id^="wrapFrame_"]').forEach(el => memory[el.id+'_style'] = el.style.display);
             document.querySelectorAll('[id^="wrapAlianza_"]').forEach(el => memory[el.id+'_html'] = el.innerHTML);
             
-            localStorage.setItem('oprivision_db_v6', JSON.stringify(memory));
+            localStorage.setItem('oprivision_db_v7', JSON.stringify(memory));
         }
 
         function loadFromLocalCache() {
-            const memRaw = localStorage.getItem('oprivision_db_v6');
+            const memRaw = localStorage.getItem('oprivision_db_v7');
             if(memRaw) {
                 const mem = JSON.parse(memRaw);
                 document.querySelectorAll('[id]').forEach(el => {
