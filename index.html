@@ -43,11 +43,37 @@
         .dropdown-content a:hover { background-color: var(--gris-claro); color: var(--cian); }
         .dropdown:hover .dropdown-content { display: block; animation: fadeIn 0.3s ease; }
 
-        /* BOTONES CTA - Fondo Amarillo, Texto Azul Oscuro, Sin Sombras */
-        .btn-header-cta, .btn-hero-cta { background-color: var(--dorado); color: var(--azul-oscuro); padding: 12px 25px; border-radius: 50px; text-decoration: none; font-weight: 800; font-size: 14px; border: none; box-shadow: none; transition: 0.3s; cursor:pointer;}
-        .btn-header-cta:hover, .btn-hero-cta:hover { background-color: var(--azul-oscuro); color: var(--blanco); }
+        /* =========================================================================
+           BOTONES CTA CON RESPLANDOR (GLOW EFFECT)
+           ========================================================================= */
+        .btn-header-cta, .btn-hero-cta { 
+            background-color: var(--dorado); 
+            color: var(--azul-oscuro); 
+            padding: 12px 25px; 
+            border-radius: 50px; 
+            text-decoration: none; 
+            font-weight: 800; 
+            font-size: 14px; 
+            border: none; 
+            transition: 0.3s; 
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.6); /* Resplandor Inicial */
+            animation: pulseGlow 2s infinite; /* Animación de Latido */
+        }
+        .btn-header-cta:hover, .btn-hero-cta:hover { 
+            background-color: var(--azul-oscuro); 
+            color: var(--blanco); 
+            box-shadow: 0 0 25px rgba(11, 46, 78, 0.8); /* Resplandor al hacer hover */
+            animation: none; /* Detiene el latido al poner el mouse */
+        }
 
-        /* HERO - Alineado a la derecha, sin sombras en texto */
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 10px rgba(212, 175, 55, 0.4); transform: scale(1); }
+            50% { box-shadow: 0 0 25px rgba(212, 175, 55, 0.9); transform: scale(1.03); }
+            100% { box-shadow: 0 0 10px rgba(212, 175, 55, 0.4); transform: scale(1); }
+        }
+
+        /* HERO */
         .hero { height: calc(100vh - 80px); position: relative; display: flex; flex-direction: column; justify-content: center; align-items: flex-end; text-align: right; color: var(--blanco); padding: 0 8%; overflow: hidden; background-color: #111;}
         .hero-bg-wrapper { position: absolute; top:0; left:0; width:100%; height:100%; z-index: 1; }
         .hero-bg { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.6); }
@@ -55,7 +81,6 @@
         .hero-content-wrap { z-index: 2; position: relative; max-width: 650px; display: flex; flex-direction: column; align-items: flex-end; }
         .hero h1 { color: var(--blanco); font-size: 52px; margin-bottom: 20px; font-weight: 800; text-shadow: none; line-height: 1.1;}
         .hero p { font-size: 20px; margin-bottom: 35px; color: #f4f4f4; text-shadow: none; }
-        
         .hero-upload-btn { display:none; position:absolute; top:20px; left:20px; background:var(--dorado); color:var(--azul-oscuro); padding:10px 15px; border-radius:5px; font-weight:bold; cursor:pointer; z-index:9999; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
         
         .lens-divider { position: absolute; bottom: -5px; left: -1%; width: 102%; overflow: hidden; line-height: 0; z-index: 3; pointer-events: none; }
@@ -66,7 +91,7 @@
         section { padding: 90px 20px; text-align: center; position: relative; z-index: 4; background:var(--blanco); }
         .section-title { font-size: 38px; margin-bottom: 50px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
         .section-title::after { content: ''; width: 70px; height: 5px; background-color: var(--dorado); display: block; margin: 12px auto 0; border-radius: 3px; }
-        .grid-6 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto 70px; align-items: stretch; }
+        .grid-6 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto 70px; align-items: stretch;}
         
         .card-val { background: var(--blanco); padding: 35px 25px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.04); border-bottom: 4px solid var(--azul-oscuro); transition: 0.4s; display:flex; flex-direction:column;}
         .card-val:hover { transform: translateY(-10px); box-shadow: 0 15px 35px rgba(0,0,0,0.08); border-bottom-color: var(--cian); }
@@ -135,13 +160,26 @@
         .snellen-chart.hipermetropia .row-4, .snellen-chart.hipermetropia .row-5, .snellen-chart.hipermetropia .row-6 { filter: blur(3.5px); }
         .snellen-chart.astigmatismo div { filter: blur(1px); text-shadow: -1.5px 0 2px rgba(0,0,0,0.5); }
 
-        /* ALIANZAS SCROLL */
+        /* =========================================================================
+           ALIANZAS (MARCOS CIRCULARES AL 50%)
+           ========================================================================= */
         .alianzas-track { display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 10px 20px 30px 20px; scroll-behavior: smooth; -ms-overflow-style: none; scrollbar-width: none; max-width: 1200px; margin: 0 auto;}
         .alianzas-track::-webkit-scrollbar { display: none; }
         .aliado-item { width: 160px; flex-shrink: 0; display: flex; flex-direction: column; align-items: center; scroll-snap-align: center; position: relative;}
-        .aliado-logo { width: 140px; height: 140px; border-radius: 20px; object-fit: contain; box-shadow: 0 5px 20px rgba(0,0,0,0.05); background: white; padding: 15px; border: 2px solid transparent; transition: 0.3s;}
-        .aliado-item:hover .aliado-logo { transform: scale(1.05); border-color: var(--cian); }
-        .aliado-nombre { margin-top: 15px; font-weight: bold; color: var(--azul-oscuro); text-align: center; font-size: 14px; width: 100%;}
+        
+        /* SOLUCIÓN: Marcos 100% circulares (border-radius: 50%) */
+        .aliado-logo { width: 140px; height: 140px; border-radius: 50%; object-fit: contain; box-shadow: 0 5px 20px rgba(0,0,0,0.05); background: white; padding: 15px; border: 2px solid transparent; transition: 0.3s; display: block;}
+        
+        .aliado-link { text-decoration: none; display: block; transition: transform 0.3s; }
+        .aliado-link:hover { transform: scale(1.05); }
+        .aliado-link:hover .aliado-logo { border-color: var(--cian); }
+        
+        .aliado-nombre { margin-top: 15px; font-weight: bold; color: var(--azul-oscuro); text-align: center; font-size: 14px; width: 100%; border-radius: 4px; padding: 2px;}
+        body.cms-active .aliado-nombre:focus { outline: 2px dashed var(--dorado); background: #fff8e1; }
+
+        .cms-link-btn { display:none; position:absolute; top:-5px; left:-5px; background:var(--map-blue); color:white; border-radius:50%; width:28px; height:28px; border:none; cursor:pointer; font-weight:bold; font-size:12px; z-index:105; box-shadow: 0 2px 5px rgba(0,0,0,0.3); }
+        .cms-link-btn:hover { background: #2b6cd6; transform:scale(1.1); }
+        body.cms-active .cms-link-btn { display:block; }
 
         /* UBICACIÓN CTA */
         .seccion-ubicacion { position: relative; padding: 80px 20px; background: var(--azul-oscuro); overflow:hidden; text-align:left;}
@@ -166,8 +204,8 @@
         .sticky-cta-bar.visible { bottom: 0; }
         .sticky-text h3 { color: var(--blanco); font-size: 18px; font-weight: 700; margin-bottom: 2px; }
         
-        .btn-shimmer-sticky { background-color: var(--dorado); color: var(--azul-oscuro); padding: 14px 32px; font-size: 16px; font-weight: 800; border-radius: 50px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; border: none; cursor:pointer; box-shadow: none; transition: 0.3s; }
-        .btn-shimmer-sticky:hover { background: var(--azul-oscuro); color: var(--blanco); transform: translateY(-2px); }
+        .btn-shimmer-sticky { background-color: var(--dorado); color: var(--azul-oscuro); padding: 14px 32px; font-size: 16px; font-weight: 800; border-radius: 50px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; border: none; cursor:pointer; box-shadow: 0 0 15px rgba(212, 175, 55, 0.6); animation: pulseGlow 2s infinite; transition: 0.3s; }
+        .btn-shimmer-sticky:hover { background: var(--azul-oscuro); color: var(--blanco); transform: translateY(-2px); box-shadow: 0 0 25px rgba(11, 46, 78, 0.8); animation: none;}
 
         /* CMS SYSTEM CSS */
         .cms-upload-layer { position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(11,46,78,0.85); color: white; display: none; flex-direction: column; align-items: center; justify-content: center; font-size: 12px; cursor: pointer; font-weight: bold; opacity: 0; transition: 0.3s; z-index: 100; text-align: center; }
@@ -177,6 +215,9 @@
         body.cms-active .cms-delete-btn { display:block; }
         body.cms-active .cms-upload-layer { display:flex; border: 2px dashed var(--dorado); }
 
+        /* =========================================================================
+           DISEÑO RESPONSIVO (MÓVILES)
+           ========================================================================= */
         @media (max-width: 992px) {
             header { padding: 10px 20px; }
             nav { display: none; }
@@ -189,6 +230,15 @@
             .ubi-grid { grid-template-columns: 1fr; text-align: center; }
             .ubi-info p { justify-content: center; }
         }
+
+        @media (max-width: 768px) {
+            /* SOLUCIÓN: Ocultamos el botón de la cabecera en celulares para evitar amontonamiento. 
+               El usuario usará el botón del Hero y la Sticky Bar al bajar. */
+            .btn-header-cta { 
+                display: none; 
+            }
+            .logo-marca { font-size: 20px; }
+        }
     </style>
 </head>
 <body>
@@ -197,7 +247,7 @@
         <div class="logo-container" title="Doble clic rápido 5 veces para editar">
             <div class="avatar-logo has-cms">
                 <img id="imgNavLogo" src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=200&q=80" alt="Logo OpriVisión">
-                <label for="inputNavLogo" class="cms-upload-layer"><i class="fa-solid fa-camera"></i></label>
+                <label for="inputNavLogo" class="cms-upload-layer" style="border-radius: 50%;"><i class="fa-solid fa-camera"></i></label>
                 <input type="file" id="inputNavLogo" class="cms-file-input" accept="image/*" onchange="loadCMSImage(event, 'imgNavLogo')">
             </div>
             <div class="logo-texto">
@@ -232,8 +282,8 @@
         </div>
         
         <div class="hero-content-wrap">
-            <h1 id="txtHeroTitle">Claridad y Estilo para tu Mirada</h1>
-            <p id="txtHeroSub">Expertos en salud visual brindando soluciones integrales con tecnología de vanguardia y atención personalizada en Tuluá.</p>
+            <h1 id="txtHeroTitle">Tu Salud Visual en las Mejores Manos</h1>
+            <p id="txtHeroSub">Más que una óptica, somos tu centro de bienestar visual. Agenda tu valoración integral y descubre la tranquilidad de ver lo que más amas con total claridad.</p>
             <button onclick="trackMetric('cta'); window.open('https://wa.me/573167210862?text=Hola,%20deseo%20agendar%20una%20valoración.', '_blank');" class="btn-hero-cta">Quiero mi cita</button>
         </div>
 
@@ -248,7 +298,7 @@
             <div class="card-val"><i class="fa-solid fa-building"></i><h3 id="c1T">Quiénes Somos</h3><p id="c1P">OpriVisión nace desde el año 2017 como un emprendimiento que se preocupa por la <strong>salud y el cuidado visual</strong>. Nuestra razón de ser es la atención con <strong>calidad, experiencia y honestidad</strong>.</p></div>
             <div class="card-val"><i class="fa-solid fa-bullseye"></i><h3 id="c2T">Misión</h3><p id="c2P">Ser una empresa dedicada a satisfacer las <strong>necesidades visuales</strong> de nuestros pacientes con <strong>calidad y calidez</strong>.</p></div>
             <div class="card-val"><i class="fa-solid fa-compass"></i><h3 id="c3T">Visión</h3><p id="c3P">Para el año 2028, ser reconocida como una empresa <strong>líder, sólida y humana</strong> en proporcionar soluciones en salud visual para los habitantes del <strong>centro del Valle</strong>.</p></div>
-            <div class="card-val"><i class="fa-solid fa-star"></i><h3 id="c4T">Mega</h3><p id="c4P">Al año 2030 OpriVisión se transformará en un <strong>centro de salud visual</strong>, brindando múltiples servicios y especialidades, convirtiéndose en <strong>pionero</strong> en toda la región central.</p></div>
+            <div class="card-val"><i class="fa-solid fa-star"></i><h3 id="c4T">Mega</h3><p id="c4P">Al año 2030 OpriVisión se transformará en un <strong>centro de salud visual</strong>, brindando múltiples services y especialidades, convirtiéndose en <strong>pionero</strong> en toda la región central.</p></div>
             <div class="card-val"><i class="fa-solid fa-handshake"></i><h3 id="c5T">Valores</h3><p id="c5P"><strong>Calidad e innovación</strong> en nuestros productos.<br><br><strong>Responsabilidad y compromiso</strong> con cada diagnóstico.</p></div>
             <div class="card-val"><i class="fa-solid fa-scale-balanced"></i><h3 id="c6T">Principios</h3><p id="c6P"><strong>Confianza y seguridad</strong> para tu visión.<br><br><strong>Coherencia y eficiencia</strong> en nuestros procesos.</p></div>
         </div>
@@ -261,7 +311,7 @@
             </div>
             <h3 id="txtErikaName">Dra. Erika Prieto Villalba</h3>
             <div class="cargo-dr" id="txtErikaCargo" style="text-transform: uppercase;">Profesionalismo - Dra. Erika Prieto</div>
-            <p id="txtErikaBio">OpriVisión nace desde el año 2017 como un emprendimiento que se preocupa por la salud y el cuidado visual. Nuestra razón de ser es la atención con calidad, experiencia y honestidad. Como especialista a cargo, la Dra. Erika Prieto Villalba lidera las valoraciones con tecnología computarizada de última generación, asegurando que cada paciente reciba no solo un diagnóstico clínico perfecto, sino también una asesoría de estilo sofisticada para la protección de sus ojos.</p>
+            <p id="txtErikaBio">Comprendo que tu visión es el puente que te conecta con los momentos más hermosos de tu vida y con las personas que amas. Por ello, mi mayor compromiso es escucharte con profunda empatía, brindándote un diagnóstico clínico honesto, preciso y totalmente personalizado. En OpriVisión he creado un espacio donde la tecnología médica de vanguardia se abraza con el trato humano, cálido y sensible que tú mereces. Confía tu salud visual en mis manos; estaré a tu lado cuidando de tus ojos para que veas el mundo con absoluta claridad, estilo y tranquilidad.</p>
         </div>
     </section>
 
@@ -289,6 +339,7 @@
         </div>
     </section>
 
+    <!-- OFF CANVAS PANELES -->
     <div class="off-canvas-overlay" id="overlay-panels" onclick="closeAllPanels()"></div>
     
     <div class="off-canvas" id="panel-convenio">
@@ -451,9 +502,11 @@
         </div>
 
         <div class="alianzas-track" id="trackAlianzas">
-            </div>
+            <!-- Cajones inyectados por JavaScript al cargar -->
+        </div>
     </section>
 
+    <!-- UBICACIÓN CTA -->
     <section id="ubicacion" class="seccion-ubicacion">
         <div class="ubi-grid">
             <div class="ubi-info">
@@ -462,6 +515,7 @@
                 <p id="txtUbiP2"><i class="fa-regular fa-clock" style="margin-right:10px;"></i> Horario: Lunes a Viernes (8:00 AM - 6:00 PM)</p>
                 <p id="txtUbiP3"><i class="fa-solid fa-phone" style="margin-right:10px;"></i> Teléfono: <a href="tel:+573167210862" style="color: var(--blanco); text-decoration: none;">316 7210862</a></p>
             </div>
+            <!-- API Oficial de Búsqueda para Google Maps -->
             <a href="https://www.google.com/maps/search/?api=1&query=Calle+26+%23+32-01,+Tulua" target="_blank" class="ubi-btn-maps">
                 <i class="fa-solid fa-map-location-dot" style="font-size:32px; margin-bottom:8px;"></i> Abrir en Google Maps
             </a>
@@ -471,6 +525,7 @@
         </div>
     </section>
 
+    <!-- FOOTER LIMPIO -->
     <footer class="footer-compact">
         <div class="footer-grid">
             <div class="logo-texto" style="align-items:center;">
@@ -488,6 +543,7 @@
         <p style="font-size: 12px; opacity:0.6; border-top: 1px solid rgba(255,255,255,0.1); padding-top:20px; margin-top:30px;">© 2026 OpriVisión. Todos los derechos reservados. Desarrollado con excelencia en ingeniería.</p>
     </footer>
 
+    <!-- STICKY CTA -->
     <div class="sticky-cta-bar" id="stickyCta">
         <div class="sticky-text">
             <h3 id="txtStickyT">¿Listos para una experiencia de calidad visual?</h3>
@@ -498,6 +554,7 @@
         </button>
     </div>
 
+    <!-- PANELES DE CONTROL ADMINISTRATIVO -->
     <div id="panelCmsControl" style="display: none; position: fixed; bottom: 130px; left: 20px; background: white; border: 3px solid var(--dorado); padding: 20px; border-radius: 12px; z-index: 99999; box-shadow: 0 10px 40px rgba(0,0,0,0.4); width: 280px;">
         <h4 style="text-align: center; margin-bottom: 10px;"><i class="fa-solid fa-gears"></i> Engine CMS</h4>
         <p style="font-size: 11px; color:#555; text-align:center; margin-bottom:15px;">Cambios de texto se <strong style="color:green;">Autoguardan</strong> localmente.</p>
@@ -513,6 +570,7 @@
         <button onclick="document.getElementById('panelMetrics').style.display='none'" style="width: 100%; padding: 8px; background: #ee6c4d; color: white; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; font-size:12px;">Cerrar Dashboard</button>
     </div>
 
+    <!-- JAVASCRIPT MAESTRO -->
     <script>
         function trackMetric(type) {
             let count = parseInt(localStorage.getItem('metric_'+type) || '0');
@@ -561,8 +619,13 @@
                 html += `
                 <div class="aliado-item has-cms" id="wrapAlianza_${i}">
                     <button class="cms-delete-btn" onclick="document.getElementById('wrapAlianza_${i}').remove(); saveToLocalCache();" title="Eliminar Alianza">×</button>
-                    <img id="imgAlianza_${i}" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23eee'/><text x='50' y='55' font-family='sans-serif' font-size='14' fill='%23999' text-anchor='middle'>Aliado ${i}</text></svg>" class="aliado-logo" alt="Logo Alianza">
-                    <label for="inputAlianza_${i}" class="cms-upload-layer" style="border-radius:20px;"><i class="fa-solid fa-camera"></i></label>
+                    <button class="cms-link-btn" onclick="setAlianzaLink(${i})" title="Añadir Enlace a la Empresa"><i class="fa-solid fa-link"></i></button>
+                    
+                    <a href="#" target="_blank" class="aliado-link" id="linkAlianza_${i}" onclick="return checkLink(this)">
+                        <img id="imgAlianza_${i}" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23eee'/><text x='50' y='55' font-family='sans-serif' font-size='14' fill='%23999' text-anchor='middle'>Aliado ${i}</text></svg>" class="aliado-logo" alt="Logo Alianza">
+                        <label for="inputAlianza_${i}" class="cms-upload-layer" style="border-radius:50%;" onclick="event.preventDefault(); document.getElementById('inputAlianza_${i}').click();"><i class="fa-solid fa-camera"></i></label>
+                    </a>
+                    
                     <input type="file" id="inputAlianza_${i}" class="cms-file-input" accept="image/*" onchange="loadCMSImage(event, 'imgAlianza_${i}')">
                     <div class="aliado-nombre" contenteditable="false" id="txtAlianza_${i}">Empresa ${i}</div>
                 </div>`;
@@ -578,13 +641,39 @@
             div.id = `wrapAlianza_${alianzaCount}`;
             div.innerHTML = `
                 <button class="cms-delete-btn" onclick="this.parentElement.remove(); saveToLocalCache();" title="Eliminar Alianza">×</button>
-                <img id="imgAlianza_${alianzaCount}" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23eee'/><text x='50' y='55' font-family='sans-serif' font-size='14' fill='%23999' text-anchor='middle'>Nuevo Aliado</text></svg>" class="aliado-logo" alt="Logo Alianza">
-                <label for="inputAlianza_${alianzaCount}" class="cms-upload-layer" style="border-radius:20px;"><i class="fa-solid fa-camera"></i></label>
+                <button class="cms-link-btn" onclick="setAlianzaLink(${alianzaCount})" title="Añadir Enlace a la Empresa"><i class="fa-solid fa-link"></i></button>
+                
+                <a href="#" target="_blank" class="aliado-link" id="linkAlianza_${alianzaCount}" onclick="return checkLink(this)">
+                    <img id="imgAlianza_${alianzaCount}" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23eee'/><text x='50' y='55' font-family='sans-serif' font-size='14' fill='%23999' text-anchor='middle'>Nuevo Aliado</text></svg>" class="aliado-logo" alt="Logo Alianza">
+                    <label for="inputAlianza_${alianzaCount}" class="cms-upload-layer" style="border-radius:50%;" onclick="event.preventDefault(); document.getElementById('inputAlianza_${alianzaCount}').click();"><i class="fa-solid fa-camera"></i></label>
+                </a>
+                
                 <input type="file" id="inputAlianza_${alianzaCount}" class="cms-file-input" accept="image/*" onchange="loadCMSImage(event, 'imgAlianza_${alianzaCount}')">
                 <div class="aliado-nombre" contenteditable="false" id="txtAlianza_${alianzaCount}">Nueva Empresa</div>
             `;
             document.getElementById('trackAlianzas').appendChild(div);
+            
+            if(document.body.classList.contains('cms-active')) {
+                document.getElementById(`txtAlianza_${alianzaCount}`).setAttribute('contenteditable', 'true');
+            }
             saveToLocalCache();
+        }
+
+        function setAlianzaLink(id) {
+            const url = prompt("Introduce la URL de la página o red social de este aliado (ej. https://facebook.com/empresa):");
+            if(url) {
+                document.getElementById(`linkAlianza_${id}`).href = url;
+                saveToLocalCache();
+                alert("¡Enlace guardado correctamente!");
+            }
+        }
+
+        function checkLink(el) {
+            if(el.getAttribute('href') === '#') {
+                event.preventDefault();
+                return false;
+            }
+            return true;
         }
 
         function sendFrameWhatsApp(n, c) { window.open(`https://wa.me/573167210862?text=Hola,%20me%20interesa:%20${encodeURIComponent(n)}%20(${encodeURIComponent(c)})`, '_blank'); }
@@ -627,7 +716,6 @@
 
             document.getElementById('btnFiltroAzul').addEventListener('click', function() { this.classList.toggle('active'); document.getElementById('capaAzul').style.backgroundColor = this.classList.contains('active') ? 'rgba(255, 150, 0, 0.3)' : 'transparent'; });
             
-            // Texto dinámico: Activar/Desactivar Polarizado
             document.getElementById('btnPolarizado').addEventListener('click', function() { 
                 this.classList.toggle('active'); 
                 document.getElementById('capaGlare').style.opacity = this.classList.contains('active') ? '0' : '1'; 
@@ -649,21 +737,23 @@
         }
 
         // ==========================================
-        // AUTO-SAVE SYSTEM (Versión 4 para caché)
+        // AUTO-SAVE SYSTEM (Versión 6 para caché)
         // ==========================================
         function saveToLocalCache() {
             const memory = {};
             document.querySelectorAll('[contenteditable="true"]').forEach(el => memory[el.id] = el.innerHTML);
             document.querySelectorAll('img[id]').forEach(img => memory[img.id] = img.src);
             
+            document.querySelectorAll('a[id^="linkAlianza_"]').forEach(el => memory[el.id+'_href'] = el.href);
+            
             document.querySelectorAll('[id^="wrapFrame_"]').forEach(el => memory[el.id+'_style'] = el.style.display);
             document.querySelectorAll('[id^="wrapAlianza_"]').forEach(el => memory[el.id+'_html'] = el.innerHTML);
             
-            localStorage.setItem('oprivision_db_v4', JSON.stringify(memory));
+            localStorage.setItem('oprivision_db_v6', JSON.stringify(memory));
         }
 
         function loadFromLocalCache() {
-            const memRaw = localStorage.getItem('oprivision_db_v4');
+            const memRaw = localStorage.getItem('oprivision_db_v6');
             if(memRaw) {
                 const mem = JSON.parse(memRaw);
                 document.querySelectorAll('[id]').forEach(el => {
@@ -672,13 +762,17 @@
                         else el.innerHTML = mem[el.id];
                     }
                     if(mem[el.id+'_style']) el.style.display = mem[el.id+'_style'];
+                    if(mem[el.id+'_href'] && el.tagName === 'A') el.href = mem[el.id+'_href'];
                 });
             }
         }
 
-        document.addEventListener('input', (e) => { if(e.target.getAttribute('contenteditable') === 'true') { saveToLocalCache(); } });
+        document.addEventListener('blur', (e) => { 
+            if(e.target.getAttribute('contenteditable') === 'true') { 
+                saveToLocalCache(); 
+            } 
+        }, true);
 
-        // CMS ACTIVATION
         let clics = 0, timer;
         document.querySelector('.logo-container').addEventListener('click', () => {
             clics++; clearTimeout(timer); timer = setTimeout(() => clics=0, 2000);
@@ -694,7 +788,8 @@
             
             const nodes = ['txtMarca1','txtMarca2','txtLogoSub','txtHeroTitle','txtHeroSub','txtSecTitle1','c1T','c1P','c2T','c2P','c3T','c3P','c4T','c4P','c5T','c5P','c6T','c6P','txtErikaName','txtErikaCargo','txtErikaBio','txtUbiT','txtUbiP1','txtUbiP2','txtUbiP3','txtStickyT','txtStickyS', 'srv1T','srv1P','srv2T','srv2P','srv3T','srv3P','srv4T','srv4P','srv5T','srv5P','srv6T','srv6P'];
             for(let i=1; i<=8; i++) { nodes.push(`titleFrame_${i}`); nodes.push(`codeFrame_${i}`); }
-            for(let i=1; i<=alianzaCount; i++) { nodes.push(`txtAlianza_${i}`); }
+            
+            document.querySelectorAll('.aliado-nombre').forEach(el => el.setAttribute('contenteditable', 'true'));
 
             nodes.forEach(id => {
                 const el = document.getElementById(id);
@@ -702,7 +797,6 @@
             });
         }
 
-        // PANEL SECRETO MÉTRICAS
         let clicsErika = 0, timerErika;
         function handleErikaClicks() {
             clicsErika++; clearTimeout(timerErika); timerErika = setTimeout(() => clicsErika=0, 2000);
@@ -717,7 +811,6 @@
             }
         }
 
-        // CARGA DE FOTOS
         function loadCMSImage(evt, target) {
             const f = evt.target.files[0];
             if(f) { 
@@ -734,7 +827,7 @@
             const clone = document.documentElement.cloneNode(true);
             clone.querySelector('body').classList.remove('cms-active');
             clone.querySelectorAll('[contenteditable="true"]').forEach(el => { el.removeAttribute('contenteditable'); el.style.outline='none'; });
-            clone.querySelectorAll('.cms-upload-layer, .hero-upload-btn, .cms-delete-btn, .btn-guardar-cms').forEach(el => el.style.display='none');
+            clone.querySelectorAll('.cms-upload-layer, .cms-link-btn, .hero-upload-btn, .cms-delete-btn, .btn-guardar-cms').forEach(el => el.style.display='none');
             clone.querySelector('#panelCmsControl').style.display='none';
             clone.querySelector('#panelMetrics').style.display='none';
             clone.querySelector('#btn-add-alianza').style.display='none';
