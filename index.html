@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
+    <!-- LIBRERÍA OFICIAL DE SUPABASE -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
     <style>
@@ -231,6 +232,7 @@
         .cloud-sync-status { font-size: 11px; color:#555; text-align:center; margin-bottom:15px; display: flex; align-items: center; justify-content: center; gap: 5px;}
         .cloud-sync-status.saving { color: #e0a800; }
         .cloud-sync-status.saved { color: #25D366; }
+        .cloud-sync-status.error { color: #d9534f; }
 
         /* DISEÑO RESPONSIVO (MÓVILES) */
         @media (max-width: 992px) {
@@ -256,6 +258,7 @@
     <header>
         <div class="logo-container" title="Doble clic rápido 5 veces para editar">
             <div class="avatar-logo has-cms">
+                <!-- Parche Píxel Transparente Aplicado -->
                 <img id="imgNavLogo" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" style="transition: opacity 0.5s ease-in;" alt="Logo OpriVisión">
                 <label for="inputNavLogo" class="cms-upload-layer" style="border-radius: 50%;"><i class="fa-solid fa-camera"></i></label>
                 <input type="file" id="inputNavLogo" class="cms-file-input" accept="image/*" onchange="loadCMSImage(event, 'imgNavLogo')">
@@ -285,6 +288,7 @@
 
     <section id="inicio" class="hero">
         <div class="hero-bg-wrapper has-cms">
+            <!-- Parche Píxel Transparente Aplicado (Adiós FOUC) -->
             <img id="imgHeroBg" class="hero-bg" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" style="transition: opacity 0.8s ease-in;" alt="Fondo OpriVisión">
             <label for="inputHeroBg" class="hero-upload-btn" id="heroUploaderBtn"><i class="fa-solid fa-camera"></i> Cambiar Fondo Hero</label>
             <input type="file" id="inputHeroBg" class="cms-file-input" accept="image/*" onchange="loadCMSImage(event, 'imgHeroBg')">
@@ -314,6 +318,7 @@
 
         <div class="biografia-editorial" title="Haz 5 clics en la foto para ver métricas">
             <div class="foto-erika-wrap has-cms">
+                <!-- Parche Píxel Transparente Aplicado -->
                 <img id="imgErikaProfile" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" style="transition: opacity 0.5s ease-in;" alt="Dra. Erika Prieto Villalba" onclick="handleErikaClicks()">
                 <label for="inputErikaProfile" class="cms-upload-layer"><i class="fa-solid fa-camera"></i></label>
                 <input type="file" id="inputErikaProfile" class="cms-file-input" accept="image/*" onchange="loadCMSImage(event, 'imgErikaProfile')">
@@ -348,6 +353,7 @@
         </div>
     </section>
 
+    <!-- OFF CANVAS PANELES -->
     <div class="off-canvas-overlay" id="overlay-panels" onclick="closeAllPanels()"></div>
     
     <div class="off-canvas" id="panel-convenio">
@@ -508,9 +514,11 @@
         </div>
 
         <div class="alianzas-track" id="trackAlianzas">
-            </div>
+            <!-- Cajones inyectados por JavaScript al cargar -->
+        </div>
     </section>
 
+    <!-- UBICACIÓN CTA -->
     <section id="ubicacion" class="seccion-ubicacion">
         <div class="ubi-grid">
             <div class="ubi-info">
@@ -519,6 +527,7 @@
                 <p id="txtUbiP2"><i class="fa-regular fa-clock" style="margin-right:10px;"></i> Horario: Lunes a Viernes (8:00 AM - 6:00 PM)</p>
                 <p id="txtUbiP3"><i class="fa-solid fa-phone" style="margin-right:10px;"></i> Teléfono: <a href="tel:+573167210862" style="color: var(--blanco); text-decoration: none;">316 7210862</a></p>
             </div>
+            <!-- API Oficial de Búsqueda para Google Maps -->
             <a href="https://www.google.com/maps/search/?api=1&query=Calle+26+%23+32-01,+Tulua" target="_blank" class="ubi-btn-maps">
                 <i class="fa-solid fa-map-location-dot" style="font-size:32px; margin-bottom:8px;"></i> Abrir en Google Maps
             </a>
@@ -528,6 +537,7 @@
         </div>
     </section>
 
+    <!-- FOOTER LIMPIO -->
     <footer class="footer-compact">
         <div class="footer-grid">
             <div class="logo-texto" style="align-items:center;">
@@ -545,6 +555,7 @@
         <p style="font-size: 12px; opacity:0.6; border-top: 1px solid rgba(255,255,255,0.1); padding-top:20px; margin-top:30px;">© 2026 OpriVisión. Todos los derechos reservados. Desarrollado con excelencia en ingeniería.</p>
     </footer>
 
+    <!-- STICKY CTA -->
     <div class="sticky-cta-bar" id="stickyCta">
         <div class="sticky-text">
             <h3 id="txtStickyT">¿Listos para una experiencia de calidad visual?</h3>
@@ -555,6 +566,7 @@
         </button>
     </div>
 
+    <!-- PANELES DE CONTROL ADMINISTRATIVO -->
     <div id="panelCmsControl" style="display: none; position: fixed; bottom: 130px; left: 20px; background: white; border: 3px solid var(--dorado); padding: 20px; border-radius: 12px; z-index: 99999; box-shadow: 0 10px 40px rgba(0,0,0,0.4); width: 280px;">
         <h4 style="text-align: center; margin-bottom: 10px;"><i class="fa-solid fa-gears"></i> Engine CMS</h4>
         <div class="cloud-sync-status saved" id="cloudStatus"><i class="fa-solid fa-cloud-check"></i> Sincronizado con la Nube</div>
@@ -570,6 +582,9 @@
         <button onclick="document.getElementById('panelMetrics').style.display='none'" style="width: 100%; padding: 8px; background: #ee6c4d; color: white; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; font-size:12px;">Cerrar Dashboard</button>
     </div>
 
+    <!-- =========================================================================
+         JAVASCRIPT MAESTRO (MOTOR DE SINCRONIZACIÓN CON SUPABASE)
+         ========================================================================= -->
     <script>
         // 1. LLAVES DE LA BÓVEDA (Conexión a Supabase)
         const supabaseUrl = 'https://yixfnpevnzkmxncbrkgc.supabase.co';
@@ -616,24 +631,27 @@
             const { data, error } = await supabaseClient.from('oprivision_nube').upsert({ id: 1, estado_json: memory });
             
             if(status) {
-                if(error) { status.className = 'cloud-sync-status'; status.style.color = 'red'; status.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Error al guardar'; console.error(error); }
-                else { status.className = 'cloud-sync-status saved'; status.innerHTML = '<i class="fa-solid fa-cloud-check"></i> Sincronizado'; }
+                if(error) { 
+                    status.className = 'cloud-sync-status error'; 
+                    status.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Error al guardar'; 
+                    console.error("Supabase Error:", error); 
+                } else { 
+                    status.className = 'cloud-sync-status saved'; 
+                    status.innerHTML = '<i class="fa-solid fa-cloud-check"></i> Sincronizado'; 
+                }
             }
         }
 
         async function loadFromCloud() {
-            // Extraer la información desde la bóveda
             const { data, error } = await supabaseClient.from('oprivision_nube').select('estado_json').eq('id', 1).single();
             
             if(data && data.estado_json && Object.keys(data.estado_json).length > 0) {
                 const mem = data.estado_json;
                 if(mem.alianzaCount) alianzaCount = mem.alianzaCount;
                 
-                // Construir los contenedores base vacíos
                 buildTendenciasPanel();
                 buildAlianzasCarousel();
 
-                // Rellenar con los datos de la nube
                 document.querySelectorAll('[id]').forEach(el => {
                     if(mem[el.id]) {
                         if(el.tagName === 'IMG') el.src = mem[el.id];
@@ -643,13 +661,11 @@
                     if(mem[el.id+'_href'] && el.tagName === 'A') el.href = mem[el.id+'_href'];
                 });
             } else {
-                // Si la nube está vacía (primera vez), armamos la plantilla base
                 buildTendenciasPanel();
                 buildAlianzasCarousel();
             }
         }
 
-        // Auto-guardado al soltar el teclado
         document.addEventListener('blur', (e) => { 
             if(e.target.getAttribute('contenteditable') === 'true') { saveToCloud(); } 
         }, true);
@@ -723,17 +739,10 @@
 
         function setAlianzaLink(id) {
             const url = prompt("Introduce la URL de la página o red social de este aliado (ej. https://facebook.com/empresa):");
-            if(url) {
-                document.getElementById(`linkAlianza_${id}`).href = url;
-                saveToCloud();
-                alert("¡Enlace guardado en la nube correctamente!");
-            }
+            if(url) { document.getElementById(`linkAlianza_${id}`).href = url; saveToCloud(); alert("¡Enlace guardado en la nube correctamente!"); }
         }
 
-        function checkLink(el) {
-            if(el.getAttribute('href') === '#') { event.preventDefault(); return false; }
-            return true;
-        }
+        function checkLink(el) { if(el.getAttribute('href') === '#') { event.preventDefault(); return false; } return true; }
 
         function sendFrameWhatsApp(n, c) { window.open(`https://wa.me/573167210862?text=Hola,%20me%20interesa:%20${encodeURIComponent(n)}%20(${encodeURIComponent(c)})`, '_blank'); }
         function sendConvenioWhatsApp(e) { e.preventDefault(); trackMetric('cta'); const msg = `*CONVENIO*\nEmpresa: ${document.getElementById('convEmpresa').value}\nEmpleado: ${document.getElementById('convEmpleado').value}\nTel: ${document.getElementById('convTel').value}`; window.open(`https://wa.me/573167210862?text=${encodeURIComponent(msg)}`, '_blank'); }
@@ -802,16 +811,52 @@
             }
         }
 
+        // ---------------------------------------------------------
+        // NUEVO MOTOR DE COMPRESIÓN DE IMÁGENES (O(1) Efficiency)
+        // ---------------------------------------------------------
         function loadCMSImage(evt, target) {
             const f = evt.target.files[0];
-            if(f) { 
-                const r = new FileReader(); 
-                r.onload = async e => { 
-                    document.getElementById(target).src = e.target.result; 
-                    await saveToCloud(); 
-                }; 
-                r.readAsDataURL(f); 
+            if(!f) return;
+
+            const status = document.getElementById('cloudStatus');
+            if(status) { 
+                status.className = 'cloud-sync-status saving'; 
+                status.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Comprimiendo...'; 
             }
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const img = new Image();
+                img.onload = async function() {
+                    // Calculamos un tamaño óptimo para no colapsar la base de datos
+                    const MAX_WIDTH = 800;
+                    const MAX_HEIGHT = 800;
+                    let width = img.width;
+                    let height = img.height;
+
+                    if (width > height) {
+                        if (width > MAX_WIDTH) { height *= MAX_WIDTH / width; width = MAX_WIDTH; }
+                    } else {
+                        if (height > MAX_HEIGHT) { width *= MAX_HEIGHT / height; height = MAX_HEIGHT; }
+                    }
+
+                    // Creamos un lienzo digital para redimensionar la foto
+                    const canvas = document.createElement('canvas');
+                    canvas.width = width;
+                    canvas.height = height;
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0, width, height);
+
+                    // Transformamos la foto a formato WebP (Súper ligero)
+                    const compressedBase64 = canvas.toDataURL('image/webp', 0.7);
+
+                    // Inyectamos la foto comprimida y la guardamos en la bóveda
+                    document.getElementById(target).src = compressedBase64;
+                    await saveToCloud();
+                };
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(f);
         }
     </script>
 </body>
